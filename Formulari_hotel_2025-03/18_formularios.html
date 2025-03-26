@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de eteiquetas de formulario</title>
+    <style>
+      :focus {
+        background-color: burlywood;
+      }
+      div {
+        margin: 1rem 0;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        border: 1px solid black;
+        margin: 0.5rem 1rem;
+      }
+      button:disabled {
+        color: lightskyblue;
+        border: 1px solid lightskyblue;
+      }
+
+      #textoEmail {
+        width: 90%;
+      }
+
+      input {
+        accent-color: green;
+      }
+
+      input[type="range"] {
+        width: 90%;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>Catálogo de etiquetas de formulario</h1></header>
+
+    <main>
+      <form action="#" id="form1" name="myForm1">
+        <fieldset>
+          <legend>* Inputs básicos</legend>
+          <div>
+            <label for="nombre">Nombre : </label>
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              placeholder="Escribe tu nombre"
+              minlength="5"
+              maxlength="10"
+              
+              autofocus
+              required
+              title="Escribe tu nombre, mínimo 5 letras, máximo 10"
+            />
+            <p ></p>
+            <!-- pattern="[A-Za-z]{5,10}" -->
+            <!-- El atributo required marca la obligación de cumplimentar ese input  -->
+          </div>
+          <div>
+            <label>Apellido : <input type="text" name="apellido" /></label>
+          </div>
+          <div>
+            <label for="password">Contraseña : </label>
+            <input type="password" name="password" id="password" />
+          </div>
+          <div>
+            <label
+              >Número :
+              <input type="number" name="numero" min="0" max="10" step="2"
+            /></label>
+          </div>
+          <div>
+            <input type="hidden" name="hidden" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Datos personales</legend>
+          <div>
+            <label> Email : <input type="email" name="email" /></label>
+          </div>
+          <div>
+            <label> Teléfono : <input type="tel" name="tel" /></label>
+          </div>
+          <div>
+            <label> URL : <input type="url" name="url" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Radio buttons</legend>
+          <div>
+            <label
+              ><input type="radio" name="colores" value="rojo" checked />
+              Rojo</label
+            >
+          </div>
+          <div>
+            <label
+              ><input type="radio" name="colores" value="azul" /> Azul</label
+            >
+          </div>
+          <div>
+            <label
+              ><input type="radio" name="colores" value="verde" /> Verde</label
+            >
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Checkbox</legend>
+          <div>
+            <label>
+              <input type="checkbox" name="condiciones" id="condiciones" />
+              Acepto las condiciones</label
+            >
+          </div>
+          <div>
+            <label>
+              <input type="checkbox" name="info" /> Acepto recibir información
+              comercial</label
+            >
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Fechas</legend>
+          <div>
+            <label>
+              Año-Mes-Día-Hora-Minutos
+              <input type="datetime-local" name="datetime-local"
+            /></label>
+          </div>
+          <div>
+            <label> Año-Mes-Día <input type="date" name="date" /></label>
+          </div>
+          <div>
+            <label> Horas-Minutos <input type="time" name="time" /></label>
+          </div>
+          <div>
+            <label> Week <input type="week" name="week" /></label>
+          </div>
+          <div>
+            <label> Month <input type="month" name="month" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tipos varios</legend>
+          <div>
+            <label for="">Color : <input type="color" name="color" /></label>
+          </div>
+          <div>
+            <label for="">
+              Ficheros :
+              <input type="file" name="file" accept="image/*, .pdf" multiple />
+            </label>
+          </div>
+          <div>
+            <label for="">
+              Buscar : <input type="search" name="search" id=""
+            /></label>
+          </div>
+          <div>
+            <label for="">
+              Range <input id="range" type="range" name="range" min="0" max="10"
+            /> <span id="rangeNumber"></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Selección desde listas</legend>
+          <div>
+            <label for="marcas">Elige tu marca favorita</label>
+            <select name="marcas" id="marcas" multiple>
+              <option value="mercedes" selected>Mercedes</option>
+              <option value="audi">Audi</option>
+              <option value="ferrari">Ferrari</option>
+              <option value="porsche">Porsche</option>
+            </select>
+          </div>
+          <div>
+            <label for="lenguaje"> Selecciona tu lenguaje :</label>
+            <input type="text" list="lenguajes" />
+            <datalist id="lenguajes">
+              <option value="HTML"></option>
+              <option value="CSS"></option>
+              <option value="Javascript"></option>
+              <option value="Python"></option>
+              <option value="PHP"></option>
+            </datalist>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Textarea</legend>
+          <div>
+            <label for="feedback">
+              Feedback : <textarea cols="30" rows="10"></textarea>
+            </label>
+            <label for="textoEmail"> Mensaje :
+              <textarea id="textoEmail"></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Inputs globales</legend>
+          <input type="submit" value="Enviar formulario" />
+          <input type="reset" value="Borrar el Formulario" />
+          <input type="button" value="Soy un botón" />
+        </fieldset>
+        <fieldset>
+          <legend>Buttons</legend>
+          <button type="submit" disabled id="btnSubmit">
+            Enviar formulario
+          </button>
+          <button type="reset">Borrar el formulario</button>
+          <button type="button">Soy un button</button>
+          <button disabled="disabled">Boton deshabilitado</button>
+        </fieldset>
+
+        <p>* Campos obligatorios</p>
+      </form>
+    </main>
+
+    <script>
+      // Sistema 1 para obtener los valores del formulario
+      // por id
+      const form1 = document.getElementById("form1");
+
+      // form1.addEventListener('submit', (e) => {
+      //     e.preventDefault()
+      //     const nombre = document.getElementById('nombre').value
+      //     const password = document.getElementById('password').value
+      //     const colores = document.querySelector('input[type="radio"]:checked').value
+      //     console.log(nombre, password, colores);
+
+      // })
+
+      // Sistema 2
+      // por name
+      const myForm1 = document.forms["myForm1"];
+
+      myForm1.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nombre = myForm1["nombre"].value.trim();
+        if (nombre.length < 2) {
+            document.querySelector('input[type="text"] + p').textContent = "El nombre debe tener 2 caracteres como mínimo"
+        }
+        const apellido = myForm1["apellido"].value;
+        const password = myForm1["password"].value;
+        const colores = myForm1["colores"].value;
+        console.log(nombre, apellido, password, colores);
+      });
+
+      const checkboxCondiciones = document.getElementById("condiciones");
+
+      let disabled = true;
+      checkboxCondiciones.addEventListener("change", () => {
+        // alert('has cambiado el checkbox')
+        const btnSubmit = document.getElementById("btnSubmit");
+        if (disabled) {
+          btnSubmit.disabled = false;
+          disabled = false;
+        } else {
+          btnSubmit.disabled = true;
+          disabled = true;
+        }
+      });
+
+      const inputColor = document.querySelector('input[type="color"]');
+
+      inputColor.addEventListener("change", () => {
+        const color = inputColor.value;
+        document.querySelector("body").style.color = color;
+      });
+
+
+      const range = document.getElementById('range')
+
+      range.addEventListener('change', () => {
+        const rangeValue = range.value
+        document.getElementById('rangeNumber').textContent = rangeValue
+        // alert(rangeValue)
+      })
+    </script>
+  </body>
+</html>

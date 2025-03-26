@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propagación de eventos</title>
+    <style>
+        #abuelo {
+            text-align: center;
+            max-width: 400px;
+            height: 60%;
+            margin: auto;
+            border: 4px solid darkgreen;
+            padding: 2rem;
+        }
+
+        #padre {
+            height: 60%;
+            border: 4px solid darkred;
+            padding: 2rem;
+        }
+        #nieto {
+            height: 40%;
+            border: 4px solid darkblue;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="abuelo">
+        <p>Soy el abuelo</p>
+        <div id="padre">
+            <p>Soy el padre</p>
+            <div id="nieto">
+                <p>Soy el nieto</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const abuelo = document.querySelector('#abuelo')
+        const padre = document.getElementById('padre')
+        const nieto = document.querySelector('#nieto')
+
+        nieto.addEventListener('click', (event) => {
+            event.stopPropagation();
+            console.log("Has hecho clic en el nieto");
+            nieto.style.backgroundColor = "lightblue"
+        });
+
+        padre.addEventListener('click', (event) => {
+            event.stopPropagation();
+            console.log("Has hecho clic en el Padre");
+            padre.style.backgroundColor = "pink"
+        });
+
+        abuelo.addEventListener('click', (event) => {
+            event.stopPropagation();
+            console.log("Has hecho clic en el Abuelo");
+            abuelo.style.backgroundColor = "lightgreen"
+        });
+        
+    </script>
+</body>
+</html>

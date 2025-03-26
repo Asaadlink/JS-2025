@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Ubicación</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-size: cover;
+        background-position: center;
+        transition: background 0.5s ease;
+    }
+
+    h1 {
+        margin-top: 20px;
+        color: #333;
+    }
+
+    form {
+        margin: 20px auto;
+        display: inline-block;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+    <h1>Selector de Ubicación</h1>
+    <form>
+        <label>Continente:
+            <select id="continente">
+                <option value="europa" selected>Europa</option>
+                <option value="america">América</option>
+                <option value="asia">Asia</option>
+                <option value="africa">África</option>
+                <option value="oceania">Oceanía</option>
+            </select>
+        </label>
+        
+        <br><br>
+        
+        <label>País:
+            <select id="pais"></select>
+        </label>
+        
+        <br><br>
+        
+        <label>Ciudad:
+            <select id="ciudad"></select>
+        </label>
+    </form>
+
+    <script>
+
+        const paises = {
+            europa: ['Francia', 'Alemania', 'España'],
+            america: ['EEUU', 'Canada', 'Brasil'],
+            asia: ['China', 'Japón', 'India'],
+            africa: ['Egipto', 'Kenia', 'Sudafrica'],
+            oceania: ['Australia', 'NuevaZelanda', 'Fiji']
+        };
+
+        const ciudades = {
+            Francia: ['París', 'Lyon', 'Marsella'],
+            Alemania: ['Berlín', 'Múnich', 'Hamburgo'],
+            España: ['Madrid', 'Barcelona', 'Valencia'],
+            EEUU: ['Nueva York', 'LosÁngeles', 'Chicago'],
+            Canada: ['Toronto', 'Vancouver', 'Montreal'],
+            Brasil: ['Río de Janeiro', 'São Paulo', 'Brasilia'],
+            China: ['Pekín', 'Shanghái', 'Cantón'],
+            Japón: ['Tokio', 'Osaka', 'Kioto'],
+            India: ['Nueva Delhi', 'Mumbai', 'Bangalore'],
+            Egipto: ['El Cairo', 'Alejandría', 'Giza'],
+            Kenia: ['Nairobi', 'Mombasa', 'Kisumu'],
+            Sudafrica: ['Ciudad del Cabo', 'Johannesburgo', 'Durban'],
+            Australia: ['Sídney', 'Melbourne', 'Brisbane'],
+            NuevaZelanda: ['Auckland', 'Wellington', 'Christchurch'],
+            Fiji: ['Suva', 'Lautoka', 'Nadi']
+        };
+
+
+        const continente = document.getElementById('continente');
+        const pais = document.getElementById('pais');
+        const ciudad = document.getElementById('ciudad');
+
+        
+        function llenarSelect(select, valores, defecto = '') {
+            select.innerHTML = valores.map(v => 
+                `<option ${v == defecto ? 'selected' : ''}>${v}</option>`
+            ).join('');
+        }
+
+       
+        function cambiarContinente() {
+            llenarSelect(pais, paises[continente.value], '');
+            cambiarPais();
+        }
+
+        
+        function cambiarPais() {
+            llenarSelect(ciudad, ciudades[pais.value] || [], '');
+        }
+
+    
+        continente.onchange = cambiarContinente;
+        pais.onchange = cambiarPais;
+
+        cambiarContinente();
+
+        function cambiarPais() {
+    llenarSelect(ciudad, ciudades[pais.value] || [], '');
+
+    const cityImages = {
+        París: 'url("https://upload.wikimedia.org/wikipedia/commons/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg")',
+        Lyon: 'url("lyon.jpg")',
+        Marsella: 'url("marseille.jpg")',
+        Berlín: 'url("berlin.jpg")',
+        Múnich: 'url("munich.jpg")',
+        Hamburgo: 'url("hamburg.jpg")',
+        Madrid: 'url("madrid.jpg")',
+        Barcelona: 'url("barcelona.jpg")',
+        Valencia: 'url("valencia.jpg")',
+        NuevaYork: 'url("valencia.jpg")',
+        LosÁngeles: 'url("https://a.travel-assets.com/findyours-php/viewfinder/images/res70/475000/475457-Los-Angeles.jpg")',
+        Chicago: 'url("valencia.jpg")',
+        Toronto: 'url("valencia.jpg")',
+        Vancouver: 'url("valencia.jpg")',
+        Montreal: 'url("valencia.jpg")',
+        RíodeJaneiro: 'url("valencia.jpg")',
+        SãoPaulo: 'url("valencia.jpg")',
+        Brasilia: 'url("valencia.jpg")',
+        Pekín: 'url("valencia.jpg")',
+        Shanghái: 'url("valencia.jpg")',
+        Cantón: 'url("valencia.jpg")',
+        Tokio: 'url("valencia.jpg")',
+        Osaka: 'url("valencia.jpg")',
+        Kioto: 'url("valencia.jpg")',
+        NuevaDelhi: 'url("valencia.jpg")',
+        Mumbai: 'url("valencia.jpg")',
+        Bangalore: 'url("valencia.jpg")',
+        ElCairo: 'url("valencia.jpg")',
+        Alejandría: 'url("valencia.jpg")',
+        Giza: 'url("valencia.jpg")',
+        Nairobi: 'url("valencia.jpg")',
+        Mombasa: 'url("valencia.jpg")',
+        Kisumu: 'url("valencia.jpg")',
+        CiudaddelCabo: 'url("valencia.jpg")',
+        Johannesburgo: 'url("valencia.jpg")',
+        Durban: 'url("valencia.jpg")',
+        Sídney: 'url("valencia.jpg")',
+        Melbourne: 'url("valencia.jpg")',
+        Brisbane: 'url("valencia.jpg")',
+        Auckland: 'url("valencia.jpg")',
+        Wellington: 'url("valencia.jpg")',
+        Christchurch: 'url("valencia.jpg")',
+        Suva: 'url("valencia.jpg")',
+        Lautoka: 'url("valencia.jpg")',
+        Nadi: 'url("valencia.jpg")',
+
+        
+    };
+
+    const selectedCity = ciudad.value;
+    document.body.style.backgroundImage = cityImages[selectedCity] || 'none';
+}
+
+    </script>
+</body>
+</html>

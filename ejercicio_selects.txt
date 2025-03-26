@@ -1,0 +1,8 @@
+hay que crear un formulario que contenga 3 selects
+En el primero se podrá elegir entre tres continentes: Europa, América, África.
+
+cuando se haya elegido uno de ellos en el segundo aparecerán 
+tres paises de ese continente, los que te quieras (pero no de los otros dos).
+
+Al elegir el país en el tercer select se mostrarán tres cuidades de ese pais (las que tú quieras), pero no de otros paises.
+Pueder elegir elcontinente y ciudad que quieras que aparezca por defecto
